@@ -1,0 +1,132 @@
+AI Interview Agent Architecture
+
+The architecture of the AI Interview Agent is designed as a modular, multi-stage system that handles question generation, user interaction, voice processing, answer evaluation, and session logging. Each component is separated to ensure clarity, scalability, and easy maintenance.
+
+User Input
+    (Select Role, Difficulty, Text/Voice Answer)
+            ↓
+Streamlit UI
+    Displays questions and collects responses
+            ↓
+AI Interview Engine
+    LLM-based question generation
+            ↓
+Voice Processing (optional)
+    Whisper → Speech to Text
+    edge-tts → Text to Speech
+            ↓
+Evaluation Engine
+    LLM scoring, semantic comparison, feedback generation
+            ↓
+Database
+    Stores answers, scores, logs, feedback
+            ↓
+UI Output Layer
+    Shows score, feedback, model answer, summary report
+
+1. User Interface (UI Layer)
+
+Technology: Streamlit
+Purpose: Acts as the main interaction point between the user and the system.
+
+Responsibilities:
+
+Allow users to select job role and interview difficulty
+
+Display generated interview questions
+
+Accept user responses via text or microphone
+
+Show scores, feedback, and final performance summary
+
+The UI triggers events and forwards user inputs to the backend engines.
+
+2. AI Interview Engine
+
+Technology: LLM (OpenAI/Hugging Face models)
+
+This module contains the core logic responsible for generating interview questions based on:
+
+Selected role
+
+Difficulty level
+
+Interviewer persona prompt
+
+It ensures that the interview flow remains structured, coherent, and professional.
+The engine sends the generated question to both the UI and the voice module.
+
+3. Voice Processing Module
+
+Technologies: Whisper (Speech-to-Text), edge-tts (Text-to-Speech)
+
+Responsibilities:
+
+Convert user’s spoken answers into text
+
+Read out interview questions using TTS
+
+Support real-time audio-based interview experiences
+
+The processed text is passed to the evaluation module for scoring.
+
+4. Evaluation Engine
+
+Technologies: LLM evaluation, NLP similarity models
+
+Responsibilities:
+
+Analyze the user’s response
+
+Compare answers using semantic similarity or LLM scoring
+
+Provide evaluation metrics:
+
+Accuracy
+
+Relevance
+
+Clarity
+
+Outputs of this module include a numerical score, detailed feedback, and an improved model answer.
+
+5. Database Layer
+
+Technology: SQLite
+
+Stores:
+
+User responses
+
+Evaluation scores
+
+Interview session logs
+
+Generated feedback and summaries
+
+This allows the system to maintain interview history and generate reports.
+
+6. System Data Flow
+
+The full workflow of the architecture follows this sequence:
+User Input
+    (Select Role, Difficulty, Text/Voice Answer)
+            ↓
+Streamlit UI
+    Displays questions and collects responses
+            ↓
+AI Interview Engine
+    LLM-based question generation
+            ↓
+Voice Processing (optional)
+    Whisper → Speech to Text
+    edge-tts → Text to Speech
+            ↓
+Evaluation Engine
+    LLM scoring, semantic comparison, feedback generation
+            ↓
+Database
+    Stores answers, scores, logs, feedback
+            ↓
+UI Output Layer
+    Shows score, feedback, model answer, summary report
