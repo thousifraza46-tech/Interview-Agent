@@ -1,0 +1,33 @@
+# AI Interview Agent - Requirements
+
+# Core Framework
+streamlit>=1.28.0
+
+# AI APIs
+openai>=2.0.0
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+
+# AI and NLP
+sentence-transformers>=2.2.2
+torch>=2.0.0
+transformers>=4.30.0
+
+# Speech Processing
+openai-whisper>=20230918
+edge-tts>=6.1.9
+
+# Audio Processing
+pydub>=0.25.1
+soundfile>=0.12.1
+pyaudio>=0.2.13
+
+# Database
+# sqlite3 is built-in with Python
+
+# Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Utilities
+python-dateutil>=2.8.2
